@@ -1,0 +1,31 @@
+body{
+    width:0;
+    width:auto;
+}
+#face{
+    width:auto;
+}
+#face h3{
+    width:60%;
+    height:30px;
+    line-height:30px;
+    margin:10px auto;
+    text-align:center;
+    border:1px dashed #aaa;
+}
+#face dl{
+    width:80%;
+    margin:0 auto;
+}
+#face dl dd{
+    width:220px;
+    text-align: center;
+}
+
+
+#face dl dd img{
+    width:60px;
+    height:60px;
+    border:1px solid red;
+    cursor:pointer;
+}

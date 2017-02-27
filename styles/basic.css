@@ -1,0 +1,29 @@
+*{background: #fff;}
+body{width:960px;height:800px;margin:10px auto;}
+#header{width:auto;height:200px;border-bottom:10px solid #aaa;}
+#header h1{width:auto;height:125px;margin:0px}
+#header h1 a{
+    background: url(../images/0.jpg) no-repeat;
+    display:block;
+    text-indent: -9999px;
+    width:auto;height:125px;)
+}
+#header ul{text-align: right;padding:15px 20px 0 0;}
+#header ul li{display:inline;}
+#header ul li a{
+    text-decoration:none;
+ }
+#header ul li a:hover{
+    color:red;
+}
+#footer{
+    width:auto;
+    clear:both;
+    font-size: 12px;
+    text-align:center;
+    letter-spacing: 1px;
+    padding-top:30px;
+}
+#footer span{color:#1b7d1c;}
+ul{list-style-type: none;}
+h2{background:#eee;font-size:14px;margin:0;height:25px;line-height:25px;text-indent:5px;}
