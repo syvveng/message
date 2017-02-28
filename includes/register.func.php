@@ -20,6 +20,7 @@ if(!function_exists('_alert_back')){
  * $str:表示提交的username
  * $mix:用户名最小值
  * $max:用户名最大值
+ * trim()去掉头部和尾部的空格
  */
 function _check_username($str,$mix=6,$max=18){
     $_str = trim($_POST[$str]);
