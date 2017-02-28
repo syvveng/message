@@ -38,8 +38,9 @@ if(_get('action') == 'register'){
     //$str:表示提交的username,$mix:用户名最小值,$max:用户名最大值
     $_arr['username'] = _check_username('username',3,20);
     //密码检测
-     $_arr['password'] = _check_password('password','confirm_pass');
-     $_arr['question'] = _check_question('question');
+    $_arr['password'] = _check_password('password','confirm_pass');
+    $_arr['question'] = _check_question('question');
+    $_arr['answer'] = _check_answer('answer');
      //性别
     $_arr['sex'] = _check_sex('sex');
     //头像
@@ -52,11 +53,52 @@ if(_get('action') == 'register'){
     $_arr['myurl'] = _check_url('myurl');
 //    print_r($_arr);
 
-//    $mysqli->query("INSERT INTO m_user(m_username) VALUES ('weng')");
+    $_query = $mysqli->query("SELECT m_username FROM m_user WHERE m_username='{$_arr['username']}'");
+
+    //检测用户名是否存在
+    if(mysqli_fetch_array($_query)){
+        _alert_back("对不起，此用户名已被注册!");
+    }
+    
+
+    $mysqli->query("INSERT INTO m_user(
+                                          m_uniqid,
+                                          m_active,
+                                          m_username,
+                                          m_password,
+                                          m_question,
+                                          m_answer,
+                                          m_sex,
+                                          m_face,
+                                          m_email,
+                                          m_qq,
+                                          m_url,
+                                          m_regtime,
+                                          m_last_logtime,
+                                          m_lastip
+                                        ) 
+                                        VALUES 
+                                        (
+                                        '{$_arr['uniqid']}',
+                                        '{$_arr['active']}',
+                                        '{$_arr['username']}',
+                                        '{$_arr['password']}',
+                                        '{$_arr['question']}',
+                                        '{$_arr['answer']}',
+                                        '{$_arr['sex']}',
+                                        '{$_arr['face']}',
+                                        '{$_arr['email']}',
+                                        '{$_arr['qq']}',
+                                        '{$_arr['myurl']}',
+                                        NOW(),
+                                        NOW(),
+                                        '{$_SERVER["REMOTE_ADDR"]}'
+                                        )");
+    $mysqli->close();
+    _location("注册成功！","index.php");
 
 }
     $_SESSION['uniqid'] = $_uniqid = _sha1_uniqid();
-
 ?>
 <!DOCTYPE html>
 <html>

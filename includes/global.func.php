@@ -7,6 +7,11 @@
  * Time: 20:32
  */
 
+//防止恶意调用
+if(!defined("IN_TG")){
+    exit("Access Defined!");
+}
+
 //获取时间
 function _runtime(){
     $_time = explode(" ",microtime());
@@ -22,9 +27,16 @@ function _get($str){
 //js弹窗效果以及返回
 //弹框中要换行需用\n,但是\n不能用双引号("")，只能用单引号'';
 function _alert_back($_info){
-    echo "<script type='text/javascript'>alert('".$_info."');history.back();</script>";
+    echo "<script type='text/javascript'>alert('$_info');history.back();</script>";
     exit();
 }
+
+//定向跳转
+function _location($_info,$_url){
+    echo "<script type='text/javascript'>alert('$_info');location='$_url';</script>";
+    exit();
+}
+
 
 function _sha1_uniqid(){
     return sha1(uniqid(rand(),true));
@@ -33,7 +45,7 @@ function _sha1_uniqid(){
 //转义函数
 function _mysql_string($str){
     if(!GPC){
-        return mysql_real_escape_string($str);
+        return mysqli_real_escape_string($str);
     }
     return $str;
 }

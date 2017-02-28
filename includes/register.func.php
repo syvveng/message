@@ -96,6 +96,9 @@ function _check_question($str,$mix=4,$max=18){
     }
     return $_str;
 }
+function _check_answer($str){
+    return  $_POST[$str];
+}
 
 function _check_sex($str){
     return $_POST[$str];
