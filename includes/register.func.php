@@ -39,7 +39,7 @@ function _check_username($str,$mix=6,$max=18){
     //限制敏感用户名
     //弹框中要换行需用\n,但是\n不能用双引号("")，只能用单引号'';
     $_num[0] = "weng";
-    $_num[1] = "张三";
+    $_num[1] = "张三风";
     $val = null;
     foreach($_num as $value){
        $val .=$value;
