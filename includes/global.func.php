@@ -26,7 +26,17 @@ function _alert_back($_info){
     exit();
 }
 
+function _sha1_uniqid(){
+    return sha1(uniqid(rand(),true));
+}
 
+//转义函数
+function _mysql_string($str){
+    if(!GPC){
+        return mysql_real_escape_string($str);
+    }
+    return $str;
+}
 /**
  * $_width是图像的长度
  * $_height是图像的高度

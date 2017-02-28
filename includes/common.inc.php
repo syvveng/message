@@ -17,6 +17,8 @@ header("Content-Type:text/html;charset=utf-8");
 if(PHP_VERSION < '4.1.0'){
     exit("Version is too low!");
 }
+//创建一个自动转义状态的常量
+define("GPC",get_magic_quotes_gpc());
 
 //定义硬路径为一个常量，引入速度更快
 define("ROOT_PATH",substr(dirname(__FILE__),0,-8));

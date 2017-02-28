@@ -28,7 +28,7 @@ require dirname(__FILE__)."/includes/common.inc.php";
         <dl>
             <dd>
                  <?php foreach(range(1,15) as $pic) {  ?>
-                 <img src="images/face/<?php echo $pic; ?>.jpg" alt="头像<?php echo $pic; ?>" />
+                 <img src="images/face/<?php echo $pic; ?>.jpg" alt="images/face/<?php echo $pic; ?>.jpg" title="头像<?php echo $pic; ?>" />
                  <?php } ?>
             </dd>
         </dl>

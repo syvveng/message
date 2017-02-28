@@ -25,13 +25,15 @@ require dirname(__FILE__)."/includes/common.inc.php";
 //我们在核心函数库中(global.func.php)用一个函数_get()来表示$_GET[$str]并赋值就不会报错了
 if(_get('action') == 'register'){
 
-    //为了防止恶意注册
+    // 为了防止恶意注册
     if(!($_POST['yzm'] == $_SESSION['code'])){
         _alert_back("验证码错误！");
     }
 
     include ROOT_PATH."includes/register.func.php";
     $_arr = array();
+    $_arr['uniqid'] = _check_uniqid($_POST['uniqid'], $_SESSION['uniqid']);
+    $_arr['active'] = sha1(uniqid(rand(),true));
     //用户名检测
     //$str:表示提交的username,$mix:用户名最小值,$max:用户名最大值
     $_arr['username'] = _check_username('username',3,20);
@@ -48,9 +50,11 @@ if(_get('action') == 'register'){
     $_arr['qq'] = _check_qq('qq');
     //个人主页
     $_arr['myurl'] = _check_url('myurl');
-
+//    print_r($_arr);
 
 }
+    $_SESSION['uniqid'] = $_uniqid = _sha1_uniqid();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,6 +73,7 @@ if(_get('action') == 'register'){
     <div id="register">
     	<h2>会员注册</h2>
     	<form method="post" action="register.php?action=register">
+            <input type="hidden" name="uniqid" value="<?php echo $_uniqid; ?>" />
     		<dl>
     			<dt>请认真填写以下信息</dt>
                 <div class="int">
@@ -102,8 +107,9 @@ if(_get('action') == 'register'){
                     <input type="radio" name="sex" value="女" />女
                 </div>
                 <div class="img">
-                    <label for="img">头像选择:</label>
-                    <img src="images/face/1.jpg" class="face" id="faceimg" alt="select_pics">
+                    <label for="face">头像选择:</label>
+                    <input type="hidden" name="face" id="input_face" value="images/face/1.jpg"/>
+                    <img src="images/face/1.jpg"  id="faceimg" alt="select_pics">
                 </div>
                 <div class="int">
                     <label for="email">邮件:</label>

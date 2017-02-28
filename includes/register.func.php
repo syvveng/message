@@ -14,6 +14,22 @@ if(!defined("IN_TG")){
 if(!function_exists('_alert_back')){
     exit("_alert_back函数不存在，请检查!");
 }
+//检查_mysql_string是否存在
+if(!function_exists('_mysql_string')){
+    exit("_mysql_string函数不存在，请检查!");
+}
+
+/**
+ * @param $str
+ * @return mixed
+ * 返回唯一标识符
+ */
+function _check_uniqid($str1,$str2){
+    if((strlen($str1) != 40) || ($str1 != $str2) ){
+        _alert_back("唯一标识符错误!");
+    }
+    return $str1;
+}
 
 //检查用户名
 /**
@@ -105,7 +121,7 @@ function _check_email($str){
 function _check_qq($str){
     $_str = $_POST[$str];
     if(!empty($_str)){
-        $_arr = '/^[1-9]{1}[0-9]$/';
+        $_arr = '/^[1-9]{1,}[0-9]$/';
         if(!preg_match($_arr,$_str)){
             _alert_back("QQ输入错误，第一位不能为0!");
         }
