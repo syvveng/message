@@ -41,9 +41,9 @@ if(_get('action') == 'register'){
      $_arr['password'] = _check_password('password','confirm_pass');
      $_arr['question'] = _check_question('question');
      //性别
-    $_arr['sex'] = $_POST['sex'];
+    $_arr['sex'] = _check_sex('sex');
     //头像
-    $_arr['face'] = $_POST['face'];
+    $_arr['face'] = _check_face('face');
     //email
     $_arr['email'] = _check_email('email');
     //QQ
@@ -51,6 +51,8 @@ if(_get('action') == 'register'){
     //个人主页
     $_arr['myurl'] = _check_url('myurl');
 //    print_r($_arr);
+
+//    $mysqli->query("INSERT INTO m_user(m_username) VALUES ('weng')");
 
 }
     $_SESSION['uniqid'] = $_uniqid = _sha1_uniqid();
@@ -72,7 +74,7 @@ if(_get('action') == 'register'){
 
     <div id="register">
     	<h2>会员注册</h2>
-    	<form method="post" action="register.php?action=register">
+    	<form method="post" name="register" action="register.php?action=register">
             <input type="hidden" name="uniqid" value="<?php echo $_uniqid; ?>" />
     		<dl>
     			<dt>请认真填写以下信息</dt>

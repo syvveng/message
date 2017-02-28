@@ -27,4 +27,15 @@ require ROOT_PATH."includes/global.func.php";
 
 //定义开始时间为常量
 define("START_TIME",_runtime());
+
+define("DB_HOST","localhost");
+define("DB_USER","root");
+define("DB_PWD","");
+define("DB_NAME","message");
+
+//创建数据库连接
+$mysqli = new mysqli(DB_HOST,DB_USER,DB_PWD,DB_NAME);
+$mysqli->set_charset("UTF8");
+//echo $mysqli->character_set_name();
+//var_dump($mysqli);
 ?>
