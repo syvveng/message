@@ -21,7 +21,7 @@ img#faceimg{
     margin-left:40px;
     width:60px;
     height:60px;
-    border:1px solid red;
+    border:1px dashed red;
     cursor:pointer;
 }
 .int{
@@ -30,8 +30,8 @@ img#faceimg{
     margin:5px auto;
     /*border:1px solid #aaa;*/
 }
-.int span{
-    color:red;
+ span{
+    color:blue;
     font-style: italic;
     font-size:12px;
 }

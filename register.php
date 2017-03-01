@@ -120,7 +120,7 @@ if(_get('action') == 'register'){
                 <div class="int">
                     <label for="username">用户名:</label>
                     <input type="text" name="username" class="text"/>
-                    <span>(*必填项)</span>
+                    <span class="display">(*必填项)</span>
                 </div>
                 <div class="int">
                     <label for="password">密码:</label>
