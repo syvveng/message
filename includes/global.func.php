@@ -30,7 +30,6 @@ function _alert_back($_info){
     echo "<script type='text/javascript'>alert('$_info');history.back();</script>";
     exit();
 }
-
 //定向跳转
 function _location($_info,$_url){
     echo "<script type='text/javascript'>alert('$_info');location='$_url';</script>";

@@ -46,6 +46,6 @@ if(!$mysqli->set_charset("UTF8")){
     exit("字符集错误!");
 }
 
-//数据库初始化
+//echo $mysqli->character_set_name();
 
 ?>

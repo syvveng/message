@@ -29,8 +29,7 @@ if(_get('action') == 'register'){
     if(!($_POST['yzm'] == $_SESSION['code'])){
         _alert_back("验证码错误！");
     }
-
-    include ROOT_PATH."includes/register.func.php";
+    require ROOT_PATH."includes/register.func.php";
     $_arr = array();
     $_arr['uniqid'] = _check_uniqid($_POST['uniqid'], $_SESSION['uniqid']);
     $_arr['active'] = sha1(uniqid(rand(),true));
@@ -53,7 +52,7 @@ if(_get('action') == 'register'){
     $_arr['myurl'] = _check_url('myurl');
 //    print_r($_arr);
 
-    $_query = $mysqli->query("SELECT m_username FROM m_user WHERE m_username='{$_arr['username']}'");
+    $_query = $mysqli->query("SELECT m_username FROM m_user WHERE m_username='{$_arr['username']}' LIMIT 1");
 
     //检测用户名是否存在
     if(mysqli_fetch_array($_query)){
@@ -68,16 +67,16 @@ if(_get('action') == 'register'){
                                           m_password,
                                           m_question,
                                           m_answer,
-                                          m_sex,
-                                          m_face,
                                           m_email,
                                           m_qq,
                                           m_url,
+                                          m_sex,
+                                          m_face,                                          
                                           m_regtime,
                                           m_last_logtime,
                                           m_lastip
-                                        ) 
-                                        VALUES 
+                                        )
+                                        VALUES
                                         (
                                         '{$_arr['uniqid']}',
                                         '{$_arr['active']}',
@@ -85,14 +84,14 @@ if(_get('action') == 'register'){
                                         '{$_arr['password']}',
                                         '{$_arr['question']}',
                                         '{$_arr['answer']}',
-                                        '{$_arr['sex']}',
-                                        '{$_arr['face']}',
                                         '{$_arr['email']}',
                                         '{$_arr['qq']}',
                                         '{$_arr['myurl']}',
+                                        '{$_arr['sex']}',
+                                        '{$_arr['face']}',                                       
                                         NOW(),
                                         NOW(),
-                                        '{$_SERVER["REMOTE_ADDR"]}'
+                                        '{$_SERVER['REMOTE_ADDR']}'
                                         )");
     $mysqli->close();
     _location("注册成功！","index.php");
@@ -106,13 +105,11 @@ if(_get('action') == 'register'){
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>会员注册</title>
     <?php require ROOT_PATH."includes/title.inc.php";  ?>
+    <!--    如果同时加载两个js脚本，前面的失效-->
+    <script type="text/javascript" src="js/register.js" ></script>
 </head>
 <body>
     <?php require ROOT_PATH."includes/header.inc.php"; ?>
-
-    <!--    如果同时加载两个js脚本，前面的失效，所以将verification.js内容复制到face.js-->
-    <script type="text/javascript" src="js/face.js" ></script>
-<!--    <script type="text/javascript" src="js/verificationcode.js" ></script>-->
 
     <div id="register">
     	<h2>会员注册</h2>

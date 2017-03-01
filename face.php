@@ -19,7 +19,7 @@ require dirname(__FILE__)."/includes/common.inc.php";
   <meta charset="UTF-8">
   <title>头像选择</title>
   <?php  require ROOT_PATH."includes/title.inc.php"; ?>
-    <script type="text/javascript" src="js/select_face.js"></script>
+    <script type="text/javascript" src="js/opener.js"></script>
 
 </head>
 <body>
