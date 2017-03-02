@@ -42,6 +42,12 @@ define("DB_NAME","message");
 //创建数据库连接
 $mysqli = new mysqli(DB_HOST,DB_USER,DB_PWD,DB_NAME);
 
+if ($mysqli->connect_error) {
+    die('Connect Error (' . $mysqli->connect_errno . ') '
+        . $mysqli->connect_error);
+}
+
+
 if(!$mysqli->set_charset("UTF8")){
     exit("字符集错误!");
 }

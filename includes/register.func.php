@@ -46,6 +46,12 @@ function _check_username($str,$mix=6,$max=18){
 
 
 //密码检测
+/**
+ * @param $str
+ * @param int $mix
+ * @param int $max
+ * @return string
+ */
 function _check_password($str,$mix=6,$max=18){
     $_str = $_POST[$str];
     //加密返回

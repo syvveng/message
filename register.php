@@ -93,9 +93,13 @@ if(_get('action') == 'register'){
                                         NOW(),
                                         '{$_SERVER['REMOTE_ADDR']}'
                                         )");
-    $mysqli->close();
-    _location("注册成功！","index.php");
-
+    if($mysqli->affected_rows == 1) {
+        $mysqli->close();
+        _location("注册成功！", "active.php?active=".$_arr['active']);
+    }else{
+        $mysqli->close();
+        _location("注册失败！", "register.php");
+    }
 }
     $_SESSION['uniqid'] = $_uniqid = _sha1_uniqid();
 ?>
@@ -167,7 +171,7 @@ if(_get('action') == 'register'){
                 <div class="int">
                     <label for="yzm">验证码:</label>
                     <input type="text" name="yzm" class="text yzm"/>
-                    <img src="verificationCode.php" id="code" class="yzm" />
+                    <img src="code.php" id="code" class="yzm" />
                 </div>
                 <div class="sub">
                     <input type="submit" value="注册" class="submit"/>

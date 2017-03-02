@@ -1,0 +1,40 @@
+#login{
+    width:auto;
+    height:300px;
+    border:1px solid #aaa;
+}
+#login h2{
+    text-align: center;
+}
+#main{
+    width:300px;
+    margin-left:325px;
+    margin-top:60px;
+    /*text-align: center;*/
+    /*border:1px solid #aaa;*/
+}
+#log{
+    padding:2px;
+}
+#log label{
+    width: 100px;
+    float: left;
+    text-align: right;
+}
+#main input{
+    border:1px solid #aaa;
+    margin-left:5px;
+}
+#sub{
+    margin-top:20px;
+    text-align: center;
+}
+.pointer{
+    cursor: pointer;
+}
+input.code{
+    width:60px;
+}
+img{
+    cursor: pointer;
+}

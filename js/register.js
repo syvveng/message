@@ -9,10 +9,10 @@ window.onload=function(){
         window.open("face.php","face","width=400,height=400,left=0,top=0,scrollbars=1");
     };
 
-    //刷新验证码
+    // 刷新验证码
     var code = document.getElementById("code");
     code.onclick = function(){
-        this.src ='verificationCode.php?tm='+Math.random();
+        this.src = "code.php?tm="+ Math.random();
     };
 
     //表单验证

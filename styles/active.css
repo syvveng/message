@@ -1,0 +1,14 @@
+#active{
+     width:auto;
+     height:200px;
+     border:10px solid #aaa;
+ }
+#active h2{
+    text-align: center;
+}
+#active p{
+    text-align: center;
+}
+#active a:hover{
+    color:blue;
+}

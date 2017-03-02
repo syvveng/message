@@ -13,7 +13,7 @@ session_start();
 //定义常量，用来授权调用includes里面的文件，防止恶意调用
 define("IN_TG",true);
 //定义一个常量，引入本页内容
-define("SCRIPT","verificationCode");
+//define("SCRIPT","code");
 //定义硬路径为一个常量，引入速度更快
 require dirname(__FILE__)."/includes/common.inc.php";
 
