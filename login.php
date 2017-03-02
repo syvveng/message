@@ -7,6 +7,8 @@
  * Time: 15:14
  */
 
+session_start();
+
 //定义常量，用来授权调用includes里面的文件，防止恶意调用
 define("IN_TG",true);
 //定义一个常量，引入本页内容
@@ -21,8 +23,12 @@ if(_get("action") == 'login'){
 //    print_r($_user);
     if($_user['m_username'] == $_username){
             if($_user['m_password'] == sha1($_password)){
-                $mysqli->close();
-                _location('恭喜您，登录成功！','index.php');
+                if(!($_POST['code'] == $_SESSION['code'])){
+                    _alert_back("验证码错误！");
+                }else{
+                    $mysqli->close();
+                    _location('恭喜您，登录成功！','index.php');
+                }
             }else{
                 $mysqli->close();
                 _location('密码错误，请重新填写！','login.php');
@@ -47,22 +53,32 @@ if(_get("action") == 'login'){
     <div id="login">
         <form method="post" name="login" action="login.php?action=login">
             <h2>用户登录</h2>
-            <div id="main">
-                <div id="log">
+            <div class="main">
+                <div class="log">
                     <label for="username">用户名:</label>
                     <input type="text" name="username">
                 </div>
-                <div id="log">
+                <div class="log">
                     <label for="username">密码:</label>
                     <input type="password" name="password">
                 </div>
-                <div id="log">
+                 <div class="log">
+                    <label for="keeptime">保留:</label>
+                     <div class="keeptime">
+                    <input type="radio" name="keeptime" value="0" checked="checked" class="radioclass"/>不保留
+                    <input type="radio" name="keeptime" value="1" class="radioclass" />一天
+                    <input type="radio" name="keeptime" value="2" class="radioclass" />一周
+                    <input type="radio" name="keeptime" value="3" class="radioclass" />一个月
+                     </div>
+                </div>
+
+                <div class="log">
                     <label for="code">验证码:</label>
                     <input type="text" name="code" class="code">
                     <img src="code.php" id="code" />
                 </div>
             </div>
-            <div id="sub">
+            <div class="sub">
                 <input type="submit" name="submit" value="登录" class="pointer">
                 <input type="reset" name="reset" value="重置" class="pointer">
             </div>

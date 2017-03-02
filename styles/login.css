@@ -6,26 +6,26 @@
 #login h2{
     text-align: center;
 }
-#main{
-    width:300px;
+.main{
+    width:500px;
     margin-left:325px;
     margin-top:60px;
     /*text-align: center;*/
     /*border:1px solid #aaa;*/
 }
-#log{
-    padding:2px;
+.log{
+    padding:5px;
 }
-#log label{
+.log label{
     width: 100px;
     float: left;
     text-align: right;
 }
-#main input{
+.main input{
     border:1px solid #aaa;
     margin-left:5px;
 }
-#sub{
+.sub{
     margin-top:20px;
     text-align: center;
 }
@@ -36,5 +36,11 @@ input.code{
     width:60px;
 }
 img{
+    cursor: pointer;
+}
+.keeptime{
+    font-size: 10px;
+}
+.radioclass{
     cursor: pointer;
 }
