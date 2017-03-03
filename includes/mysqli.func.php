@@ -1,12 +1,16 @@
 <?php
 /**
- * Message Version0.1
- * ===============================
- * Author: weng
- * Date: 2017/2/28
- * Time: 20:55
+ * Version message0.1
+ * ============================
+ * Author: Weng
+ * Date: 2017/2/21
+ * Time: 15:14
  */
 
+require dirname(__FILE__).'/mysqli.php';
 
 
+function _query($sql){
+//    return $mysqli->query();
+}
 ?>

@@ -28,7 +28,6 @@ define("ROOT_PATH",substr(dirname(__FILE__),0,-8));
 
 
 require ROOT_PATH."includes/global.func.php";
-require ROOT_PATH."includes/mysqli.func.php";
 
 //定义开始时间为常量
 define("START_TIME",_runtime());
