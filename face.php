@@ -27,7 +27,7 @@ require dirname(__FILE__)."/includes/common.inc.php";
         <h3>头像选择</h3>
         <dl>
             <dd>
-                 <?php foreach(range(1,15) as $pic) {  ?>
+                 <?php foreach(range(1,52) as $pic) {  ?>
                  <img src="images/face/<?php echo $pic; ?>.jpg" alt="images/face/<?php echo $pic; ?>.jpg"
                       title="头像<?php echo $pic; ?>" />
                  <?php } ?>
