@@ -36,6 +36,16 @@ function _location($_info,$_url){
     exit();
 }
 
+function _is_logout($_info,$_url){
+    echo "<script type='text/javascript'>
+            if(confirm('$_info')){
+                location='$_url';
+            }else{
+                history.back();
+            }             
+          </script>";
+    exit();
+}
 
 function _sha1_uniqid(){
     return sha1(uniqid(rand(),true));

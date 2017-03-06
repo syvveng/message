@@ -16,6 +16,11 @@ define("SCRIPT","register");
 //定义硬路径为一个常量，引入速度更快
 require dirname(__FILE__)."/includes/common.inc.php";
 
+//登录状态不能进入注册页面
+if(!empty($_COOKIE['username'])){
+    _alert_back("登录状态无法本操作!");
+}
+
 //单独这样写会报错 Undefined index：action
 //if($_GET['action']=='register'){
 //    echo "hello";

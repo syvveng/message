@@ -17,13 +17,17 @@ define("SCRIPT","login");
 require dirname(__FILE__)."/includes/common.inc.php";
 require ROOT_PATH."includes/login.func.php";
 
+//登录状态不能进入登录页面
+if(!empty($_COOKIE['username'])){
+    _alert_back("登录状态无法本操作!");
+}
+
 if(_get("action") == 'login'){
     $_username = $_POST['username'];
     $_password = $_POST['password'];
     $_keeptime = $_POST['keeptime'];
     $result = $mysqli->query("SELECT * FROM m_user WHERE m_username='$_username'");
     $_user = $result->fetch_array(MYSQLI_ASSOC);
-//    print_r($_user);
     if($_user['m_active'] == null){
         if($_user['m_username'] == $_username){
             if($_user['m_password'] == sha1($_password)){
@@ -31,7 +35,8 @@ if(_get("action") == 'login'){
                     _alert_back("验证码错误！");
                 }else{
                     $mysqli->close();
-                    _setcookie($_user['m_username'],$_user['m_uniqid'],$_keeptime);
+                    _setcookies('username',$_user['m_username'],$_keeptime);
+                    _setcookies('uniqid',$_user['m_uniqid'],$_keeptime);
                     _location('恭喜您，登录成功！','index.php');
                 }
             }else{
@@ -48,8 +53,9 @@ if(_get("action") == 'login'){
         session_destroy();
         _location('该用户没有激活，请激活！','register.php');
     }
-
 }
+
+
 ?>
 
 <!DOCTYPE html>

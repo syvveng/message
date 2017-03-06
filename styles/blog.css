@@ -1,0 +1,53 @@
+#blog{
+    width: auto;
+    height:800px;
+    border:1px solid #aaa;
+    font-size: 12px;
+}
+#blog h2{
+    text-indent: 0;
+    text-align: center;
+}
+#blog dl{
+    /*background: red;*/
+    width:200px;
+    float: left;
+    margin:10px 0 0 33px;
+}
+#blog dl dd{
+    /*background: blue;*/
+    width:150px;
+
+}
+#blog dl dd img{
+    display: block;
+    margin:0 auto;
+    float: left;
+    border: 1px dashed red;
+}
+#blog dl dt{
+    height:20px;
+    line-height:20px;
+    text-align: center;
+    width: 80px;
+    float:left;
+    /*background: yellow;*/
+}
+#blog dl dt.name{
+    width:160px;
+    float: none;
+    margin:0 0 5px 0;
+    color:#f60;
+}
+#blog dl dt.sayhi{
+    background: url("../images/sayhi.png") no-repeat 10% center;
+}
+#blog dl dt.friend{
+    background: url("../images/friend.png") no-repeat left center;
+}
+#blog dl dt.message{
+    background: url("../images/message.png") no-repeat 8% center;
+}
+#blog dl dt.flower{
+    background: url("../images/rose.png") no-repeat left center;
+}
