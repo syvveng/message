@@ -1,6 +1,6 @@
 #blog{
     width: auto;
-    height:800px;
+    height:400px;
     border:1px solid #aaa;
     font-size: 12px;
 }
@@ -50,4 +50,21 @@
 }
 #blog dl dt.flower{
     background: url("../images/rose.png") no-repeat left center;
+}
+#pagenum{}
+#pagenum ul{}
+#pagenum ul li{
+    width:17px;
+    height:17px;
+    line-height:17px;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #aaa;
+    display: inline-block;
+}
+#pagenum ul li a{
+    text-decoration: none;
+}
+#pagenum ul li a:hover{
+    color:red;
 }

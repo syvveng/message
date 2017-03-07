@@ -14,8 +14,16 @@ define("SCRIPT","blog");
 //定义硬路径为一个常量，引入速度更快
 require dirname(__FILE__)."/includes/common.inc.php";
 
-$result = $mysqli->query('SELECT m_username,m_sex,m_face FROM m_user limit 16');
+/**
+ * $pagesize每页显示数量
+ * $num数据总条数
+ * $page当前页
+ */
+$pagesize = 8;
+$page = $_GET["page"];
+$page_start = ($page-1)*$pagesize;
 
+$result = $mysqli->query("SELECT m_username,m_sex,m_face FROM m_user ORDER BY m_regtime DESC LIMIT $page_start,$pagesize");
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +52,15 @@ $result = $mysqli->query('SELECT m_username,m_sex,m_face FROM m_user limit 16');
         </dl>
         <?php }  ?>
     </div>
-
+    <div id="pagenum">
+        <ul>
+            <li><a href="blog.php?page=1">1</a></li>
+            <li><a href="blog.php?page=2">2</a></li>
+            <li><a href="blog.php?page=3">3</a></li>
+            <li><a href="blog.php?page=4">4</a></li>
+            <li><a href="blog.php?page=5">5</a></li>
+        </ul>
+    </div>
 
     <?php
         require ROOT_PATH."includes/footer.inc.php";
