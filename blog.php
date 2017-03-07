@@ -14,6 +14,9 @@ define("SCRIPT","blog");
 //定义硬路径为一个常量，引入速度更快
 require dirname(__FILE__)."/includes/common.inc.php";
 
+$result = $mysqli->query('SELECT m_username,m_sex,m_face FROM m_user limit 16');
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,14 +33,14 @@ require dirname(__FILE__)."/includes/common.inc.php";
 
     <div id="blog">
         <h2>博友界面</h2>
-        <?php for($i=10;$i<26;$i++){  ?>
+        <?php while($_user_arr = $result->fetch_array(MYSQLI_ASSOC)){  ?>
         <dl>
-            <dt class="name">name</dt>
-            <dd class="img"><img src="images/face/<?php echo $i; ?>.jpg" alt="头像1"/></dd>
+            <dt class="name"><?php echo $_user_arr['m_username']; ?>(<?php echo $_user_arr['m_sex']; ?>)</dt>
+            <dd class="img"><img src="<?php echo $_user_arr['m_face']; ?>" alt="头像1"/></dd>
             <dt class="sayhi">发消息</dt>
             <dt class="friend">加为好友</dt>
             <dt class="message">写留言</dt>
-            <dt class="flower">给他送花</dt>
+            <dt class="flower">给<?php if($_user_arr['m_sex'] == '男'){ echo '他';}else{echo '她';} ?>送花</dt>
         </dl>
         <?php }  ?>
     </div>
