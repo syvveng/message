@@ -1,6 +1,6 @@
 #blog{
     width: auto;
-    height:400px;
+    height:450px;
     border:1px solid #aaa;
     font-size: 12px;
 }
@@ -51,20 +51,45 @@
 #blog dl dt.flower{
     background: url("../images/rose.png") no-repeat left center;
 }
-#pagenum{}
-#pagenum ul{}
-#pagenum ul li{
+.pagenum{
+    clear: both;
+}
+.pagenum ul{
+    width: 180px;
+    padding-top:30px;
+    margin:auto;
+}
+.pagenum ul li{
     width:17px;
     height:17px;
     line-height:17px;
     font-size: 12px;
+    float: left;
     text-align: center;
-    border: 1px solid #aaa;
-    display: inline-block;
+    display: block;
+    cursor: pointer;
+    color:#666;
+    border:1px solid #aaa;
+    margin-left:5px;
 }
-#pagenum ul li a{
+.pagenum ul a{
     text-decoration: none;
 }
-#pagenum ul li a:hover{
-    color:red;
+.pagenum ul a:hover li,li.selected{
+    background: #333;
+    color:#fff;
+}
+.pagetext{
+    clear: both;
+}
+.pagetext ul{
+    text-align: center;
+    padding:10px;
+}
+.pagetext ul li{
+    display: inline;
+    padding:3px;
+}
+.pagetext ul li a{
+    color:#333;
 }
