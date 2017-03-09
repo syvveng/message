@@ -12,6 +12,23 @@ if(!defined("IN_TG")){
     exit("Access Defined!");
 }
 
+
+/**
+ * _html()表示对字符串进行HTML过滤显示
+ * @param $string
+ * @return string
+ * Convert special characters to HTML entities:过滤‘’，“”，&，<,>
+ */
+function _htmls($string){
+    if(is_array($string)){
+        foreach($string as $key => $value){
+            $_string[$key] = htmlspecialchars($value);
+        }
+    }else{
+        $_string = htmlspecialchars($string);
+    }
+    return $_string;
+}
 //获取时间
 function _runtime(){
     $_time = explode(" ",microtime());

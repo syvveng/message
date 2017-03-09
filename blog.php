@@ -44,6 +44,8 @@ $result = $mysqli->query("SELECT m_username,m_sex,m_face FROM m_user ORDER BY m_
             <dt class="flower">给<?php if($_user_arr['m_sex'] == '男'){ echo '他';}else{echo '她';} ?>送花</dt>
         </dl>
         <?php }
+            //释放结果内存
+             mysqli_free_result($result);
             _paging(2);
         ?>
     </div>

@@ -15,7 +15,7 @@ if(!defined("IN_TG")){
     <h2>中心导航</h2>
     <dl>
         <dd class="dt"><a href="">基本设置</a></dd>
-        <dd><a href="">个人信息</a></dd>
+        <dd><a href="member.php">个人信息</a></dd>
         <dd><a href="">修改资料</a></dd>
     </dl>
     <dl>
