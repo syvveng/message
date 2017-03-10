@@ -20,5 +20,5 @@ setcookie('username','',time()-1);
 setcookie('uniqid','',time()-1);
 session_destroy();
 //_is_logout('您确定要退出吗?','index.php');
-_location('退出成功','index.php');
+_location('退出成功','login.php');
 ?>

@@ -1,0 +1,80 @@
+#member_modify{
+    width: auto;
+    height:600px;
+    border:1px solid #aaa;
+    font-size: 12px;
+}
+#member_modify h2{
+    text-indent: 0;
+    text-align: center;
+}
+
+#member_modify .member_sidebar{
+    width:300px;
+    height:550px;
+    border:1px dashed #aaa;
+    margin:10px;
+    float: left;
+}
+#member_modify .member_sidebar dl{
+    margin:0 12px;
+}
+#member_modify .member_sidebar dl dd{
+    width:200px;
+    height:50px;
+    line-height:50px;
+    border:1px solid #aaa;
+    text-align:center;
+    background: #eee;
+}
+#member_modify .member_sidebar dl dd.dt{
+    background: #ccc;
+}
+#member_modify .member_sidebar dl dd a{
+    display: block;
+    text-decoration: none;
+    background: none;
+    color:#333;
+}
+#member_modify .member_sidebar dl dd  a:hover{
+    background: #ccc;
+}
+#member_modify .member_main{
+    width:600px;
+    height:550px;
+    border:1px dashed #aaa;
+    float: right;
+    margin:10px;
+}
+#member_modify .member_main dl{
+    margin-top:30px;
+}
+#member_modify .member_main dl dd{
+    border-bottom:1px dashed #aaa;
+    height:30px;
+    width:500px;
+    line-height:30px;
+    font-size:14px;
+    color:#111;
+    font-family: Arial;
+}
+#member_modify .member_main dl dd span{
+    width:60px;
+    height:20px;
+    display: block;
+    float: left;
+    text-align: right;
+    margin-right:10px;
+    font-style:normal;
+
+}
+#member_modify .member_main dl dd input{
+    border:1px solid #aaa;
+}
+#member_modify .member_main dl dd.submit{
+    padding-left:80px;
+}
+#member_modify .member_main dl dd.submit input{
+    background: #eee;
+    cursor:pointer;
+}
