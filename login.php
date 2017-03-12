@@ -26,7 +26,7 @@ if(_get("action") == 'login'){
     $_username = $_POST['username'];
     $_password = $_POST['password'];
     $_keeptime = $_POST['keeptime'];
-    $result = $mysqli->query("SELECT * FROM m_user WHERE m_username='$_username'");
+    $result = $mysqli->query("SELECT m_uniqid,m_active,m_username,m_password FROM m_user WHERE m_username='$_username'");
     $_user = $result->fetch_array(MYSQLI_ASSOC);
     if($_user['m_active'] == null){
         if($_user['m_username'] == $_username){
@@ -34,6 +34,13 @@ if(_get("action") == 'login'){
                 if(!($_POST['code'] == $_SESSION['code'])){
                     _alert_back("验证码错误！");
                 }else{
+                    //记录登录信息
+                    $mysqli->query("UPDATE m_user SET 
+                                  m_last_logtime=NOW(),
+                                  m_lastip='{$_SERVER['REMOTE_ADDR']}',
+                                  m_logtimes=m_logtimes+1
+                                  WHERE m_username='$_username'                              
+                                  ");
                     $mysqli->close();
                     _setcookies('username',$_user['m_username'],$_keeptime);
                     _setcookies('uniqid',$_user['m_uniqid'],$_keeptime);

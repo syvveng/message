@@ -20,9 +20,9 @@ if(!defined("IN_TG")){
     </dl>
     <dl>
         <dd class="dt"><a href="">其他设置</a></dd>
+        <dd><a href="member_message.php">信息查阅</a></dd>
         <dd><a href="">好友设置</a></dd>
         <dd><a href="">查看鲜花</a></dd>
-        <dd><a href="">短信查阅</a></dd>
         <dd><a href="">个人相册</a></dd>
     </dl>
 </div>

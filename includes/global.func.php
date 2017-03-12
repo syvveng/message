@@ -12,6 +12,17 @@ if(!defined("IN_TG")){
     exit("Access Defined!");
 }
 
+/**
+ * 截取前14位显示
+ * @param $_str
+ * @return string
+ */
+function _display($_str){
+    if(mb_strlen($_str,'utf-8') > 14){
+        $_str = mb_substr($_str,1,14,'utf-8')."...";
+    }
+    return $_str;
+}
 
 /**
  * _html()表示对字符串进行HTML过滤显示
@@ -41,12 +52,28 @@ function _get($str){
     return $val;
 }
 
+//删除session
+function _session_destroy(){
+    if(session_start()){
+        session_destroy();
+    }
+}
 //js弹窗效果以及返回
 //弹框中要换行需用\n,但是\n不能用双引号("")，只能用单引号'';
 function _alert_back($_info){
     echo "<script type='text/javascript'>alert('$_info');history.back();</script>";
     exit();
 }
+
+/**
+ * js弹窗效果以及关闭窗口
+ * @param $_info
+ */
+function _alert_close($_info){
+    echo "<script type='text/javascript'>alert('$_info');window.close();</script>";
+    exit();
+}
+
 //定向跳转
 function _location($_info,$_url){
     echo "<script type='text/javascript'>alert('$_info');location='$_url';</script>";
@@ -68,13 +95,25 @@ function _sha1_uniqid(){
     return sha1(uniqid(rand(),true));
 }
 
-//转义函数
+
+/**
+ * 转义函数,无效，需要用面向对象方式，过程化方式mysqli_real_escape_string需要传入两个参数
+ * @param $str
+ * @return array|string
+ */
 function _mysql_string($str){
     if(!GPC){
-        return mysqli_real_escape_string($str);
+        if(is_array($str)){
+            foreach($str as $key=>$value){
+                $str[$key] = _mysql_string($value);
+            }
+        }else{
+            return mysqli_real_escape_string($str);
+        }
     }
     return $str;
 }
+
 /**
  * $_width是图像的长度
  * $_height是图像的高度

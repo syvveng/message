@@ -51,3 +51,46 @@
 #blog dl dt.flower{
     background: url("../images/rose.png") no-repeat left center;
 }
+
+.pagenum{
+    clear: both;
+}
+.pagenum ul{
+    width: 180px;
+    padding-top:30px;
+    margin:auto;
+}
+.pagenum ul li{
+    width:17px;
+    height:17px;
+    line-height:17px;
+    font-size: 12px;
+    float: left;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    color:#666;
+    border:1px solid #aaa;
+    margin-left:5px;
+}
+.pagenum ul a{
+    text-decoration: none;
+}
+.pagenum ul a:hover li,li.selected{
+    background: #333;
+    color:#fff;
+}
+.pagetext{
+    clear: both;
+}
+.pagetext ul{
+    text-align: center;
+    padding:40px;
+}
+.pagetext ul li{
+    display: inline;
+    padding:3px;
+}
+.pagetext ul li a{
+    color:#333;
+}

@@ -16,7 +16,7 @@ require dirname(__FILE__)."/includes/common.inc.php";
 require ROOT_PATH."includes/page.func.php";
 
 _page($mysqli->query("SELECT m_id FROM m_user"),12);
-$result = $mysqli->query("SELECT m_username,m_sex,m_face FROM m_user ORDER BY m_regtime DESC LIMIT $page_start,$pagesize");
+$result = $mysqli->query("SELECT m_id,m_username,m_sex,m_face FROM m_user ORDER BY m_regtime DESC LIMIT $page_start,$pagesize");
 
 ?>
 <!DOCTYPE html>
@@ -26,6 +26,7 @@ $result = $mysqli->query("SELECT m_username,m_sex,m_face FROM m_user ORDER BY m_
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>多用户留言系统</title>
     <?php require ROOT_PATH."includes/title.inc.php"; ?>
+    <script type="text/javascript" src="js/blog.js"></script>
 </head>
 <body>
     <?php
@@ -38,7 +39,7 @@ $result = $mysqli->query("SELECT m_username,m_sex,m_face FROM m_user ORDER BY m_
         <dl>
             <dt class="name"><?php echo $_user_arr['m_username']; ?>(<?php echo $_user_arr['m_sex']; ?>)</dt>
             <dd class="img"><img src="<?php echo $_user_arr['m_face']; ?>" alt="头像1"/></dd>
-            <dt class="sayhi">发消息</dt>
+            <dt class="sayhi"><a href="" name="message" title="<?php echo $_user_arr['m_id']; ?>">发消息</a></dt>
             <dt class="friend">加为好友</dt>
             <dt class="message">写留言</dt>
             <dt class="flower">给<?php if($_user_arr['m_sex'] == '男'){ echo '他';}else{echo '她';} ?>送花</dt>
@@ -46,7 +47,7 @@ $result = $mysqli->query("SELECT m_username,m_sex,m_face FROM m_user ORDER BY m_
         <?php }
             //释放结果内存
              mysqli_free_result($result);
-            _paging(2);
+            _paging_blog(2);
         ?>
     </div>
 

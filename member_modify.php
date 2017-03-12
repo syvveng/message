@@ -16,6 +16,13 @@ require dirname(__FILE__)."/includes/common.inc.php";
 
 if(_get('action') == 'modify'){
     require ROOT_PATH."includes/register.func.php";
+    //防止伪造COOKIE
+    $sql = $mysqli->query("SELECT m_uniqid FROM m_user WHERE m_username='{$_COOKIE['username']}'");
+    $result = $sql->fetch_array(MYSQLI_ASSOC);
+    if($result['m_uniqid'] != $_COOKIE['uniqid']){
+        _alert_back('唯一标识符错误!');
+    }
+
     $_arr = array();
     //性别
     $_arr['sex'] = _check_sex('sex');
@@ -42,7 +49,7 @@ if(_get('action') == 'modify'){
         _location("修改成功!","member.php");
     }else{
         $mysqli->close();
-        _location("修改失败!","member_modify.php");
+        _location("没有任何资料修改!","member_modify.php");
     }
 }
 

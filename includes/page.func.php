@@ -52,12 +52,12 @@ function _page($_sql,$_size){
 }
 
 /**
+ * 用于博友分页
  * @param $_type表示分页类型，1：表示数字类型；2：表示文本类型
  */
-function _paging($_type){
+function _paging_blog($_type){
     //必须全局，否则无法访问
     global $page,$pagenum,$num;
-
     if($_type == 1){
        echo  '<div class="pagenum">';
        echo '<ul>';
@@ -77,6 +77,53 @@ function _paging($_type){
         echo '<ul>';
         echo '<li>'.$page.'/'.$pagenum.'页 |</li>';
         echo '<li>共'.$num.'个会员 |</li>';
+
+        if($page == 1){
+            echo '<li>首页 |</li>';
+            echo '<li>上一页 |</li>';
+        }else{
+            echo '<li><a href="'.SCRIPT.'.php">首页</a> |</li>';
+            echo '<li><a href="'.SCRIPT.'.php?page='.($page-1).'">上一页</a> |</li>';
+        }
+        if($page == $pagenum){
+            echo '<li>下一页 |</li>';
+            echo '<li>尾页</li>';
+        }else{
+            echo '<li><a href="'.SCRIPT.'.php?page='.($page+1).'">下一页</a> |</li>';
+            echo '<li><a href="'.SCRIPT.'.php?page='.$pagenum.'">尾页</a></li>';
+        }
+        echo '</ul>';
+        echo '</div>';
+    }
+}
+
+/**
+ * 在_paging_blog()上将"个会员"修改成"条数据"
+ * 用于信息分页
+ * @param $_type表示分页类型，1：表示数字类型；2：表示文本类型
+ */
+function _paging_message($_type){
+    //必须全局，否则无法访问
+    global $page,$pagenum,$num;
+    if($_type == 1){
+        echo  '<div class="pagenum">';
+        echo '<ul>';
+        for($i=0;$i<$pagenum;$i++){
+            if($page == ($i+1)){
+                echo '<a href="'.SCRIPT.'.php?page='.($i+1).'"><li class="selected">'.($i+1).'</li></a>';
+            }else{
+                echo '<a href="'.SCRIPT.'.php?page='.($i+1).'"><li>'.($i+1).'</li></a>';
+            }
+        }
+        echo '</ul>';
+        echo '</div>';
+    }
+    elseif($_type == 2){
+
+        echo '<div class="pagetext">';
+        echo '<ul>';
+        echo '<li>'.$page.'/'.$pagenum.'页 |</li>';
+        echo '<li>共'.$num.'条数据 |</li>';
 
         if($page == 1){
             echo '<li>首页 |</li>';
