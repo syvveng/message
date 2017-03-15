@@ -21,6 +21,7 @@ if(!defined("IN_TG")){
         <?php
         if(!empty($_COOKIE["username"])){
             echo '<li><a href="member.php">'.$_COOKIE["username"].'☆个人中心</a></li>';
+            echo '<li>'.$_GLOBAL['message'].'</li>';
             echo "\n";
             }
         else{

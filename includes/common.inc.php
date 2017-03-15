@@ -53,4 +53,15 @@ if(!$mysqli->set_charset("UTF8")){
 
 //echo $mysqli->character_set_name();
 
+if(!empty($_COOKIE['username'])){
+    $result = $mysqli->query("SELECT COUNT(m_id) AS count FROM m_message  WHERE m_state=0 AND m_to_user='{$_COOKIE['username']}' ");
+    $message = $result->fetch_array(MYSQLI_ASSOC);
+    if(empty($message['count'])){
+        $_GLOBAL['message'] = '<a href="member_message.php"><strong class="readed">(0)</strong></a>';
+    }else{
+        $_GLOBAL['message'] = '<a href="member_message.php"><strong class="noread">('.$message['count'].')</strong></a>';
+    }
+}
+
+
 ?>

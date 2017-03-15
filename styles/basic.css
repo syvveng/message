@@ -9,7 +9,15 @@ body{width:960px;height:800px;margin:10px auto;}
     width:auto;height:125px;)
 }
 #header ul{text-align: right;padding:15px 20px 0 0;}
-#header ul li{display:inline;}
+#header ul li{display:inline;padding:0 0 0 5px;}
+#header ul li strong.readed{
+    background: url("../images/readed.png") no-repeat left center;
+    padding:0 0 0 32px;
+}
+#header ul li strong.noread{
+    background: url("../images/noread.png") no-repeat left center;
+    padding:0 0 0 32px;
+}
 #header ul li a{
     text-decoration:none;
  }

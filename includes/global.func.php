@@ -17,9 +17,9 @@ if(!defined("IN_TG")){
  * @param $_str
  * @return string
  */
-function _display($_str){
-    if(mb_strlen($_str,'utf-8') > 14){
-        $_str = mb_substr($_str,1,14,'utf-8')."...";
+function _display($_str,$length = 14){
+    if(mb_strlen($_str,'utf-8') > $length){
+        $_str = mb_substr($_str,1,$length,'utf-8')."...";
     }
     return $_str;
 }
@@ -97,7 +97,8 @@ function _sha1_uniqid(){
 
 
 /**
- * 转义函数,无效，需要用面向对象方式，过程化方式mysqli_real_escape_string需要传入两个参数
+ * 转义函数,无效
+ * 需要用面向对象方式，过程化方式mysqli_real_escape_string需要传入两个参数
  * @param $str
  * @return array|string
  */

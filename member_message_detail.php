@@ -41,7 +41,7 @@ if(_get('action') == 'delete' && isset($_GET['id'])){
     }
 }
 if(isset($_GET['id'])){
-    $_result = $mysqli->query("SELECT m_id,m_from_user,m_content,m_date FROM m_message WHERE m_id='{$_GET['id']}'");
+    $_result = $mysqli->query("SELECT m_id,m_from_user,m_content,m_state,m_date FROM m_message WHERE m_id='{$_GET['id']}'");
     $_arr = $_result->fetch_array(MYSQLI_ASSOC);
     $_html = array();
     $_html['id'] = $_arr['m_id'];
@@ -49,6 +49,9 @@ if(isset($_GET['id'])){
     $_html['content'] = $_arr['m_content'];
     $_html['date'] = $_arr['m_date'];
     $_html = _htmls($_html);
+    if($_arr['m_state'] == 0){
+        $mysqli->query("UPDATE m_message SET m_state=1 WHERE m_id='{$_GET['id']}'");
+    }
 }else{
     _alert_back("非法操作!");
 }

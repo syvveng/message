@@ -38,7 +38,7 @@ if(_get('action') == 'delete' && isset($_POST['checkthis'])){
 }
 
 _page($mysqli->query("SELECT m_id FROM m_message WHERE m_to_user='{$_COOKIE['username']}'"),8);
-$result = $mysqli->query("SELECT m_id,m_from_user,m_content,m_date FROM m_message ORDER BY m_date DESC LIMIT $page_start,$pagesize");
+$result = $mysqli->query("SELECT m_id,m_from_user,m_content,m_state,m_date FROM m_message WHERE m_to_user='{$_COOKIE['username']}' ORDER BY m_date DESC LIMIT $page_start,$pagesize");
 
 ?>
 <!DOCTYPE html>
@@ -62,27 +62,36 @@ $result = $mysqli->query("SELECT m_id,m_from_user,m_content,m_date FROM m_messag
         <h2>信息管理中心</h2>
         <form method="post" action="?action=delete">
             <table cellspacing="1">
-                <tr><th>发信者</th><th>消息内容</th><th>发送时间</th><th>操作</th></tr>
+                <tr><th>发信者</th><th>消息内容</th><th>发送时间</th><th>状态</th><th>操作</th></tr>
                 <?php
                     while($_arr = $result->fetch_array(MYSQLI_ASSOC)){
                         $_html = array();
                         $_html['id'] = $_arr['m_id'];
                         $_html['from_user'] = $_arr['m_from_user'];
-                        $_html['content'] = $_arr['m_content'];
+//                        $_html['content'] = $_arr['m_content'];
+//                        $_html['state'] = $_arr['m_state'];
                         $_html['date'] = $_arr['m_date'];
                         $_html = _htmls($_html);
+                        if($_arr['m_state'] == 1){
+                            $_html['state'] = '已读';
+                            $_html['content'] = _display($_arr['m_content']);
+                        }else{
+                            $_html['state'] = '<strong>未读</strong>';
+                            $_html['content'] = '<strong>'._display($_arr['m_content']).'</strong>';
+                        }
                 ?>
                 <tr>
                     <td><?php echo $_html['from_user']; ?></td>
-                    <td title="<?php echo $_html['content']; ?>"><a href="member_message_detail.php?id=<?php echo $_html['id']; ?>"><?php echo _display($_html['content']); ?></a></td>
+                    <td title="<?php echo $_html['content']; ?>"><a href="member_message_detail.php?id=<?php echo $_html['id']; ?>"><?php echo $_html['content']; ?></a></td>
                     <td><?php echo $_html['date']; ?></td>
+                    <td><?php echo $_html['state']; ?></td>
                     <!-- 复选框name必须为数组，加[],这样$_POST才是数组，否者最后选择的会覆盖前面的所有选择 -->
                     <td><input type="checkbox" name="checkthis[]" value="<?php echo $_html['id']; ?>" /></td>
                 </tr>
                     <?php }
                         mysqli_free_result($result);
                     ?>
-                    <tr><td colspan="4"><label for="all">全选<input type="checkbox" name="chkall" id="all" /></label><input type="submit" value="批量删除"></td></tr>
+                    <tr><td colspan="5"><label for="all">全选<input type="checkbox" name="chkall" id="all" /></label><input type="submit" value="批量删除"></td></tr>
             </table>
         </form>
         <?php _paging_message(2); ?>
