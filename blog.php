@@ -15,8 +15,9 @@ define("SCRIPT","blog");
 require dirname(__FILE__)."/includes/common.inc.php";
 require ROOT_PATH."includes/page.func.php";
 
-_page($mysqli->query("SELECT m_id FROM m_user"),12);
-$result = $mysqli->query("SELECT m_id,m_username,m_sex,m_face FROM m_user ORDER BY m_regtime DESC LIMIT $page_start,$pagesize");
+$_COOKIE['username'] = !empty($_COOKIE['username']) ? $_COOKIE['username'] : null;
+_page($mysqli->query("SELECT m_id FROM m_user WHERE m_username!='{$_COOKIE['username']}'"),12);
+$result = $mysqli->query("SELECT m_id,m_username,m_sex,m_face FROM m_user WHERE m_username!='{$_COOKIE['username']}' ORDER BY m_regtime DESC LIMIT $page_start,$pagesize");
 
 ?>
 <!DOCTYPE html>
@@ -35,12 +36,12 @@ $result = $mysqli->query("SELECT m_id,m_username,m_sex,m_face FROM m_user ORDER 
 
     <div id="blog">
         <h2>博友界面</h2>
-        <?php while($_user_arr = $result->fetch_array(MYSQLI_ASSOC)){  ?>
+        <?php while($_user_arr = $result->fetch_array(MYSQLI_ASSOC)){ ?>
         <dl>
             <dt class="name"><?php echo $_user_arr['m_username']; ?>(<?php echo $_user_arr['m_sex']; ?>)</dt>
             <dd class="img"><img src="<?php echo $_user_arr['m_face']; ?>" alt="头像1"/></dd>
             <dt class="sayhi"><a href="" name="message" title="<?php echo $_user_arr['m_id']; ?>">发消息</a></dt>
-            <dt class="friend">加为好友</dt>
+            <dt class="friend"><a href="" name="friend" title="<?php echo $_user_arr['m_id']; ?>">加为好友</a></dt>
             <dt class="message">写留言</dt>
             <dt class="flower">给<?php if($_user_arr['m_sex'] == '男'){ echo '他';}else{echo '她';} ?>送花</dt>
         </dl>

@@ -1,0 +1,28 @@
+body{
+    width: auto;
+}
+#friend h2{
+    text-indent: 0;
+    width:90%;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    border:1px dashed #333;
+    margin:10px auto;
+}
+#friend dl dd span{
+    font-weight:bold;
+}
+#friend dl dd input{
+    border:1px solid #333;
+}
+#friend dl dd textarea{
+    width:90%;
+    height:120px;
+    overflow-y: scroll;
+    border:1px solid #333;
+}
+#friend dl dd input.submit{
+    background: #ccc;
+    cursor:pointer;
+}
