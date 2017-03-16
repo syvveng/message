@@ -22,7 +22,7 @@ if(!defined("IN_TG")){
         <dd class="dt"><a href="">其他设置</a></dd>
         <dd><a href="member_message.php">信息查阅</a></dd>
         <dd><a href="member_friend.php">好友设置</a></dd>
-        <dd><a href="">查看鲜花</a></dd>
+        <dd><a href="member_zan.php">查看点赞</a></dd>
         <dd><a href="">个人相册</a></dd>
     </dl>
 </div>

@@ -15,6 +15,45 @@ define("SCRIPT","blog");
 require dirname(__FILE__)."/includes/common.inc.php";
 require ROOT_PATH."includes/page.func.php";
 
+if(_get('action') == 'zan' && isset($_GET['id'])){
+    if(!empty($_COOKIE['username'])){
+        $blog_sql = $mysqli->query("SELECT m_username FROM m_user WHERE m_id='{$_GET['id']}' LIMIT 1");
+        $blog_result = $blog_sql->fetch_array(MYSQLI_ASSOC);
+        $zan_sql = $mysqli->query("SELECT m_id 
+                                   FROM m_zan 
+                                  WHERE m_to_user='{$blog_result['m_username']}'
+                                    AND m_from_user='{$_COOKIE['username']}'
+                                ");
+        $zan_result = $zan_sql->fetch_array(MYSQLI_ASSOC);
+        if(empty($zan_result)){
+            $mysqli->query("INSERT INTO m_zan (
+                                                  m_to_user,
+                                                  m_from_user,
+                                                  m_zan_num,
+                                                  m_date) 
+                                        VALUES (
+                                                  '{$blog_result['m_username']}',
+                                                  '{$_COOKIE['username']}',
+                                                  '1',
+                                                  NOW()
+                                                 )
+                          ");
+            if($mysqli->affected_rows == 1){
+                $mysqli->close();
+                _location("点赞成功!","blog.php");
+            }else{
+                $mysqli->close();
+                _alert_back("点赞失败!");
+            }
+
+        }else{
+            _alert_back("对不起，您已经点过赞!");
+        }
+    }else{
+        _alert_back("请先登录!");
+    }
+}
+
 $_COOKIE['username'] = !empty($_COOKIE['username']) ? $_COOKIE['username'] : null;
 _page($mysqli->query("SELECT m_id FROM m_user WHERE m_username!='{$_COOKIE['username']}'"),12);
 $result = $mysqli->query("SELECT m_id,m_username,m_sex,m_face FROM m_user WHERE m_username!='{$_COOKIE['username']}' ORDER BY m_regtime DESC LIMIT $page_start,$pagesize");
@@ -43,7 +82,7 @@ $result = $mysqli->query("SELECT m_id,m_username,m_sex,m_face FROM m_user WHERE 
             <dt class="sayhi"><a href="" name="message" title="<?php echo $_user_arr['m_id']; ?>">发消息</a></dt>
             <dt class="friend"><a href="" name="friend" title="<?php echo $_user_arr['m_id']; ?>">加为好友</a></dt>
             <dt class="message">写留言</dt>
-            <dt class="flower">给<?php if($_user_arr['m_sex'] == '男'){ echo '他';}else{echo '她';} ?>送花</dt>
+            <dt class="flower"><a href="?action=zan&id=<?php echo $_user_arr['m_id']; ?>">给<?php if($_user_arr['m_sex'] == '男'){ echo '他';}else{echo '她';} ?>点赞</a></dt>
         </dl>
         <?php }
             //释放结果内存

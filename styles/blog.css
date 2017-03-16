@@ -33,6 +33,10 @@
     float:left;
     /*background: yellow;*/
 }
+#blog dl dt a{
+    text-decoration:none;
+    color:#333;
+}
 #blog dl dt.name{
     width:160px;
     float: none;
@@ -49,7 +53,7 @@
     background: url("../images/message.png") no-repeat 8% center;
 }
 #blog dl dt.flower{
-    background: url("../images/rose.png") no-repeat left center;
+    background: url("../images/zan.png") no-repeat left center;
 }
 
 .pagenum{

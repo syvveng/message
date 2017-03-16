@@ -12,11 +12,13 @@ body{width:960px;height:800px;margin:10px auto;}
 #header ul li{display:inline;padding:0 0 0 5px;}
 #header ul li strong.readed{
     background: url("../images/readed.png") no-repeat left center;
-    padding:0 0 0 32px;
+    padding:0 0 0 17px;
+    font-size: 14px;
 }
 #header ul li strong.noread{
     background: url("../images/noread.png") no-repeat left center;
-    padding:0 0 0 32px;
+    padding:0 0 0 17px;
+    font-size: 14px;
 }
 #header ul li a{
     text-decoration:none;
