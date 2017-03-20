@@ -1,3 +1,68 @@
 #list{width:600px;height:500px;border:1px solid #aaa;float:right;margin:0;border-top:0;}
 #vip{width:350px;height:248px;margin:0;border:1px solid #aaa;float:left;border-top:0;}
+#vip dl{
+    /*background: red;*/
+    width:200px;
+    margin:10px 85px;
+}
+#vip dl dd{
+    /*background: blue;*/
+    width:150px;
+
+}
+#vip dl dd img{
+    display: block;
+    margin:0 auto;
+    float: left;
+    border: 1px dashed red;
+}
+#vip dl dt{
+    height:20px;
+    line-height:20px;
+    text-align: center;
+    width: 80px;
+    float:left;
+    font-size: 12px;
+    /*background: yellow;*/
+}
+#vip dl dt a{
+    text-decoration:none;
+    color:#333;
+}
+#vip dl dt.name{
+    width:160px;
+    float: none;
+    margin:0 0 5px 0;
+    color:#f60;
+}
+#vip dl dt.sayhi{
+    background: url("../images/sayhi.png") no-repeat 10% center;
+}
+#vip dl dt.friend{
+    background: url("../images/friend.png") no-repeat left center;
+}
+#vip dl dt.message{
+    background: url("../images/message.png") no-repeat 10% center;
+
+}
+#vip dl dt.flower{
+    background: url("../images/zan.png") no-repeat left center;
+}
+#vip dl dt.email{
+    font-size: 12px;
+    width:260px;
+    float: left;
+    margin:auto;
+    text-align:left;
+    text-indent:5px;
+}
+#vip dl dt.url{
+    font-size: 12px;
+    width:260px;
+    float: left;
+    margin:auto;
+    text-align:left;
+    text-indent:5px;
+}
+
 #pics{width:350px;height:245px;margin:5px 0;border:1px solid #aaa;float:left;}

@@ -12,6 +12,66 @@ if(!defined("IN_TG")){
     exit("Access Defined!");
 }
 
+//创建xml
+function set_xml($filename,$arr_user){
+
+    $file = @fopen($filename,"w");
+    if(!$file){
+        echo "文件不存在";
+        exit();
+    }
+
+    flock($file,LOCK_EX);
+
+    $string = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "<user>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "\t<id>{$arr_user['id']}</id>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "\t<username>{$arr_user['username']}</username>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "\t<sex>{$arr_user['sex']}</sex>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "\t<face>{$arr_user['face']}</face>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "\t<email>{$arr_user['email']}</email>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "\t<url>{$arr_user['myurl']}</url>\r\n";
+    fwrite($file,$string,strlen($string));
+    $string = "</user>";
+    fwrite($file,$string,strlen($string));
+
+    flock($file,LOCK_UN);
+    fclose($file);
+}
+//获取xml
+function get_xml($filename){
+    if(file_exists($filename)){
+        $_html = array();
+        $xml = file_get_contents($filename);
+        preg_match_all('/<user>(.*)<\/user>/s',$xml,$_dom);
+        foreach($_dom[1] as $value){
+            preg_match_all('/<id>(.*)<\/id>/s',$value,$id);
+            preg_match_all('/<username>(.*)<\/username>/s',$value,$username);
+            preg_match_all('/<sex>(.*)<\/sex>/s',$value,$sex);
+            preg_match_all('/<face>(.*)<\/face>/s',$value,$face);
+            preg_match_all('/<email>(.*)<\/email>/s',$value,$email);
+            preg_match_all('/<url>(.*)<\/url>/s',$value,$url);
+            $_html['id'] = $id[1][0];
+            $_html['username'] = $username[1][0];
+            $_html['sex'] = $sex[1][0];
+            $_html['face'] = $face[1][0];
+            $_html['email'] = $email[1][0];
+            $_html['url'] = $url[1][0];
+            $_html = _htmls($_html);
+        }
+    }else{
+        echo "文件不存在!";
+    }
+
+    return $_html;
+}
 /**
  * 截取前14位显示
  * @param $_str

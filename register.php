@@ -99,7 +99,10 @@ if(_get('action') == 'register'){
                                         '{$_SERVER['REMOTE_ADDR']}'
                                         )");
     if($mysqli->affected_rows == 1) {
+        //获取刚刚新增的ID
+        $_arr['id'] = $mysqli->insert_id;
         $mysqli->close();
+        set_xml("new_user.xml",$_arr);
         _location("注册成功！", "active.php?active=".$_arr['active']);
     }else{
         $mysqli->close();
