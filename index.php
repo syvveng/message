@@ -34,6 +34,23 @@ $user_arr = get_xml("new_user.xml");
 
     <div id="list">
         <h2>帖子列表</h2>
+        <ul>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+            <li><a href="">App Annie首次设立移动平台最佳传统企业奖 </a><em>阅读数(<strong>5</strong>)评论数(<strong>6</strong>)</em></li>
+        </ul>
     </div>
     <div id="vip">
         <h2>新进会员</h2>

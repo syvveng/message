@@ -1,4 +1,18 @@
 #list{width:600px;height:500px;border:1px solid #aaa;float:right;margin:0;border-top:0;}
+#list ul li em{
+    float: right;
+    padding-right:10px;
+}
+#list ul li{
+    border-bottom:1px dashed #aaa;
+}
+
+#list ul li a{
+    color:#333;
+}
+#list ul li a:hover{
+    color:#f60;
+}
 #vip{width:350px;height:248px;margin:0;border:1px solid #aaa;float:left;border-top:0;}
 #vip dl{
     /*background: red;*/
