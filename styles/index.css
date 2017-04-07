@@ -1,7 +1,15 @@
 #list{width:600px;height:500px;border:1px solid #aaa;float:right;margin:0;border-top:0;}
+#list h2 span{
+    margin-left: 450px;
+}
+#list h2 span a{
+    text-decoration: none;
+    color:red;
+}
+
 #list ul li em{
     float: right;
-    padding-right:10px;
+    padding-right:20px;
 }
 #list ul li{
     border-bottom:1px dashed #aaa;
